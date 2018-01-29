@@ -39,20 +39,43 @@
         <title>Hello World</title>
     </head>
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-            <ul data-role="listview" data-inset="true" data-filter="true">
+         <div class="app">
+            <form>
+                <h1>Mängelliste</h1>
+                <br>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th align="left"><label for="dateLabel">Datum:</label></th>
+                            <td align="left"><label id="dateLabel"></label></td>
+                        </tr>
+                        <tr>
+                            <th align="left"><label for="roomInput">Raum:</label></th>
+                            <td align="left"><input data-clear-btn="true" name="roomInput" id="roomInput" value="" type="text"></td>
+                        </tr>
+                        <tr>
+                            <th align="left"><label for="teacherInput">Leher/In:</label></th>
+                            <td align="left"><input data-clear-btn="true" name="teacherInput" id="teacherInput" value="" type="text"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                    <!-- <label for="roomInput">Raum:</label> -->
+                    <!-- <input data-clear-btn="true" name="roomInput" id="roomInput" value="" type="text"> -->
+            </form>
+             <!-- <div id="deviceready" class="blink"> -->
+                <!-- <p class="event listening">Connecting to Device</p> -->
+                <!-- <p class="event received">Device is Ready</p> -->
+            <!-- </div> -->
+            <!-- <ul data-role="listview" data-inset="true" data-filter="true">
                 <li><a href="#">Acura</a></li>
                 <li><a href="#">Audi</a></li>
                 <li><a href="#">BMW</a></li>
                 <li><a href="#">Cadillac</a></li>
                 <li><a href="#">Ferrari</a></li>
-            </ul>
-        </div>
+            </ul> -->
+            <a href="#" data-role="button">Senden</a>
+         </div> 
+
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>

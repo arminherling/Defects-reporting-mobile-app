@@ -8,3 +8,6 @@ Um jQuery einzubinden kann man sich das zip-packet von https://jquerymobile.com/
         <script src="jquery/jquery.mobile-1.4.5.min.js"></script>
 
 in index.html im head einfügen
+
+
+ Um ein element zu erhalten kann man $("#name") verwenden
