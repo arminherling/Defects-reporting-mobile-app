@@ -1,0 +1,10 @@
+
+jQuery Mobile in cordova einzubinden
+
+Um jQuery einzubinden kann man sich das zip-packet von https://jquerymobile.com/download/ herunterladen und mit
+
+        <script src="jquery/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="jquery/jquery.mobile-1.4.5.min.css" />
+        <script src="jquery/jquery.mobile-1.4.5.min.js"></script>
+
+in index.html im head einfügen
