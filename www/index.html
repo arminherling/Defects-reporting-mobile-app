@@ -32,10 +32,10 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
         <script src="jquery/jquery-1.11.3.min.js"></script>
         <link rel="stylesheet" href="jquery/jquery.mobile-1.4.5.min.css" />
         <script src="jquery/jquery.mobile-1.4.5.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/index.css">
         <title>Hello World</title>
     </head>
     <body>
@@ -60,26 +60,26 @@
                     </tbody>
                 </table>
                 <h1>Alle Räume:</h1>
-                <label><input type="checkbox" name="check1" if="check1" value="check1">Möbiliar fehlt / defekt</label>
-                <label><input type="checkbox" name="check2" if="check2" value="check2">Tafel fehlt / defekt</label>
-                <label><input type="checkbox" name="check3" if="check3" value="check3">OHP fehlt / defekt</label>
-                <label><input type="checkbox" name="check4" if="check4" value="check4">Beamer fehlt / defekt</label>
-                <label><input type="checkbox" name="check5" if="check5" value="check5">Fensterdefekt</label>
-                <label><input type="checkbox" name="check6" if="check6" value="check6">Raum verdreckt</label>
-                <label><input type="checkbox" name="check7" if="check7" value="check7">Sonstiges:</label>
-                <input data-clear-btn="true" name="other1" id="other1" value="" type="text">
+                <label><input type="checkbox" id="check1" if="check1" value="check1">Möbiliar fehlt / defekt</label>
+                <label><input type="checkbox" id="check2" if="check2" value="check2">Tafel fehlt / defekt</label>
+                <label><input type="checkbox" id="check3" if="check3" value="check3">OHP fehlt / defekt</label>
+                <label><input type="checkbox" id="check4" if="check4" value="check4">Beamer fehlt / defekt</label>
+                <label><input type="checkbox" id="check5" if="check5" value="check5">Fensterdefekt</label>
+                <label><input type="checkbox" id="check6" if="check6" value="check6">Raum verdreckt</label>
+                <label><input type="checkbox" id="check7" if="check7" value="check7">Sonstiges:</label>
+                <input data-clear-btn="true" id="other1" name="other1" value="" type="text" style="display:none;">
                 <br>
                 <h1>EDV-Räume:</h1>
-                <label><input type="checkbox" name="check8" if="check8" value="check8">Computer defekt</label>
-                <label><input type="checkbox" name="check9" if="check9" value="check7">Bildschirm defekt</label>
-                <label><input type="checkbox" name="check10" if="check10" value="check10">Tastatur defekt</label>
-                <label><input type="checkbox" name="check11" if="check11" value="check11">Maus defekt</label>
-                <label><input type="checkbox" name="check12" if="check12" value="check12">Drucker defekt</label>
-                <label><input type="checkbox" name="check13" if="check13" value="check13">Gerät fehlt</label>
-                <label><input type="checkbox" name="check14" if="check14" value="check14">Sonstiges:</label>
-                <input data-clear-btn="true" name="other2" id="other2" value="" type="text">
-                <label><input type="checkbox" name="check14" if="check14" value="check14">Geräte Nr.:</label>
-                <input data-clear-btn="true" name="other3" id="other3" value="" type="text">
+                <label><input type="checkbox" id="check8" if="check8" value="check8">Computer defekt</label>
+                <label><input type="checkbox" id="check9" if="check9" value="check7">Bildschirm defekt</label>
+                <label><input type="checkbox" id="check10" if="check10" value="check10">Tastatur defekt</label>
+                <label><input type="checkbox" id="check11" if="check11" value="check11">Maus defekt</label>
+                <label><input type="checkbox" id="check12" if="check12" value="check12">Drucker defekt</label>
+                <label><input type="checkbox" id="check13" if="check13" value="check13">Gerät fehlt</label>
+                <label><input type="checkbox" id="check14" if="check14" value="check14">Sonstiges:</label>
+                <input data-clear-btn="true" id="other2" name="other2" value="" type="text" style="display:none;">
+                <label><input type="checkbox" id="check15" if="check15" value="check15">Geräte Nr.:</label>
+                <input data-clear-btn="true" id="other3" name="other3" value="" type="text">
                 <br>
                 <h1>Bitte Mängel näher erläutern:</h1>
                 <textarea value="" id="extra"></textarea>

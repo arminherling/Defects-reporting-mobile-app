@@ -30,6 +30,21 @@ var app = {
         this.receivedEvent('deviceready');
 
         setDateLabel();
+
+        $('#check7').click(function(){
+            console.log('clicked');
+            $('#other1').toggle();
+        });
+
+        $('#check14').click(function(){
+            console.log('clicked');
+            $('#other2').toggle();
+        });
+
+        $('#check15').click(function(){
+            console.log('clicked');
+            $('#other3').toggle();
+        });
     },
 
     // Update DOM on a Received Event
