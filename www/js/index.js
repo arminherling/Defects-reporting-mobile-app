@@ -45,6 +45,34 @@ var app = {
             console.log('clicked');
             $('#other3').toggle();
         });
+
+        $('#sendButton').click(function(){
+            var date = $('#dateLabel').text();
+            var room = $('#roomInput :selected').val();
+            var teacher = $('#teacherInput').val();
+            var furnitureBroken = $('#check1').prop('checked');
+            var blackboardBroken = $('#check2').prop('checked');
+            var OHPBroken = $('#check3').prop('checked');
+            var BeamerBroken = $('#check4').prop('checked');
+            var windowBroken = $('#check5').prop('checked');
+            var roomDirty = $('#check6').prop('checked');
+            var other1 = $('#check7').prop('checked');
+            var other1Text = $('#other1').val();
+
+            var computerBroken = $('#check8').prop('checked');
+            var screenBroken = $('#check9').prop('checked');
+            var keyboardBroken = $('#check10').prop('checked');
+            var mouseBroken = $('#check11').prop('checked');
+            var printerBroken = $('#check12').prop('checked');
+            var deviceMissing = $('#check13').prop('checked');
+            var other2 = $('#check14').prop('checked');
+            var other2Text = $('#other2').val();
+
+            var deviceNumberChecked = $('#check15').prop('checked');
+            var deviceNumber = $('#other3').val();
+
+            var extraMessage = $('#extra').val();
+        })
     },
 
     // Update DOM on a Received Event
