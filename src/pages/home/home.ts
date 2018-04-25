@@ -16,7 +16,7 @@ export class HomePage {
   }
 
   loadRest() {
-    this.restProvider.load()
+    this.restProvider.loadAll()
     .then(data => {
       this.data = data;
       console.log(this.data);

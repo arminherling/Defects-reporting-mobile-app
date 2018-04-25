@@ -8,15 +8,17 @@ import { Injectable } from '@angular/core';
   and Angular DI.
 */
 @Injectable()
-export class PeopleServiceProvider {
-
+export class PeopleServiceProvider 
+{
   apiUrl = 'https://gossens.eu/doener/api/hw_barcodes';
 
-  constructor(public http: Http) {
+  constructor(public http: Http) 
+  {
     console.log('Hello PeopleServiceProvider Provider');
   }
 
-  load() {
+  loadAll() 
+  {
     return new Promise(resolve => {
       this.http.get(this.apiUrl).subscribe(data => {
         resolve(data.json());
@@ -25,6 +27,4 @@ export class PeopleServiceProvider {
       });
     });
   }
-
-
 }
