@@ -8,6 +8,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { PeopleServiceProvider } from '../providers/people-service/people-service';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { Toast } from '@ionic-native/toast';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { PeopleServiceProvider } from '../providers/people-service/people-servic
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PeopleServiceProvider
+    PeopleServiceProvider,
+    BarcodeScanner,
+    Toast
   ]
 })
 export class AppModule {}
