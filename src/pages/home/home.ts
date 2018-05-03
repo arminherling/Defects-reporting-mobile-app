@@ -10,11 +10,14 @@ import { Toast } from '@ionic-native/toast';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  currentDate: String = new Date().toString(); 
+  currentDate: String = new Date().toISOString(); 
   data: any;
   selectedProduct: any;
   productFound:boolean = false;
 
+  roomName: String;
+  teacherName: String;
+  
   constructor(
     public navCtrl: NavController, 
     public restProvider: PeopleServiceProvider,

@@ -14,15 +14,15 @@
   <ion-list>
     <ion-item>
       <ion-label>Raum:</ion-label>
-      <ion-input type="text" placeholder="Raum" #room></ion-input>
+      <ion-input type="text" placeholder="Raum" [(ngModel)]="roomName"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Lehrer/In:</ion-label>
-      <ion-input type="text" placeholder="Lehrer/In:" #teacher></ion-input>
+      <ion-input type="text" placeholder="Lehrer/In:"  [(ngModel)]="teacherName"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Datum: </ion-label>
-      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="currentDate"></ion-datetime>
+      <ion-datetime displayFormat="DDDD MMM D, YYYY"  min="2000" max="2040" [(ngModel)]="currentDate"></ion-datetime>
     </ion-item>
     <ion-item>
         <ion-label>Alle Räume:</ion-label>
