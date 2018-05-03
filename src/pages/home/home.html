@@ -14,6 +14,7 @@
   <ion-list>
     <ion-item>
       <ion-label>Raum:</ion-label>
+
       <ion-input type="text" placeholder="Raum" [(ngModel)]="roomName"></ion-input>
     </ion-item>
     <ion-item>
@@ -29,71 +30,68 @@
       </ion-item>
     <ion-item>
       <ion-label>Mobiliar fehlt/defekt:</ion-label>
-      <ion-checkbox checked="false" #furnitureMissing></ion-checkbox>
+      <ion-checkbox checked="false" [(ngModel)]="furnitureMissing"></ion-checkbox>
     </ion-item>
     <ion-item>
       <ion-label>Tafel fehlt/defekt:</ion-label>
-      <ion-checkbox checked="false" #blackboardMissing></ion-checkbox>
+      <ion-checkbox checked="false" [(ngModel)]="blackboardMissing"></ion-checkbox>
     </ion-item>
     <ion-item>
       <ion-label>OHP fehlt/defekt:</ion-label>
-      <ion-checkbox checked="false" #ohpMissing></ion-checkbox>
+      <ion-checkbox checked="false" [(ngModel)]="ohpMissing"></ion-checkbox>
     </ion-item>
     <ion-item>
       <ion-label>Beamer fehlt/defekt:</ion-label>
-      <ion-checkbox checked="false" #beamerMissing></ion-checkbox>
+      <ion-checkbox checked="false" [(ngModel)]="beamerMissing"></ion-checkbox>
     </ion-item>
     <ion-item>
       <ion-label>Fenster fehlt/defekt:</ion-label>
-      <ion-checkbox checked="false" #windowMissing></ion-checkbox>
+      <ion-checkbox checked="false" [(ngModel)]="windowMissing"></ion-checkbox>
     </ion-item>
     <ion-item>
       <ion-label>Raum verdreckt:</ion-label>
-      <ion-checkbox checked="false" #roomDirty></ion-checkbox>
+      <ion-checkbox checked="false" [(ngModel)]="roomDirty"></ion-checkbox>
     </ion-item>
     <ion-item>
       <ion-label>EDV-Räume:</ion-label>
     </ion-item>
     <ion-item>
       <ion-label>Drucker defekt</ion-label>
-      <ion-checkbox checked="false" #printerBroken></ion-checkbox>
+      <ion-checkbox checked="false" [(ngModel)]="printerBroken"></ion-checkbox>
     </ion-item>
     <ion-item>
       <ion-label>Computer defekt, Nr</ion-label>
-      <ion-input type="text" #computerNumber></ion-input>
+      <ion-input type="text" [(ngModel)]="computerNumber"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Bildschirm defekt, Nr</ion-label>
-      <ion-input type="text" #screenNumber></ion-input>
+      <ion-input type="text" [(ngModel)]="screenNumber"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Tastatur defekt, Nr</ion-label>
-      <ion-input type="text" #keyboardNumber></ion-input>
+      <ion-input type="text" [(ngModel)]="keyboardNumber"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Maus defekt, Nr</ion-label>
-      <ion-input type="text" #mouseNumber></ion-input>
+      <ion-input type="text" [(ngModel)]="mouseNumber"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Gerät fehlt</ion-label>
-      <ion-checkbox checked="false" #deviceMissing></ion-checkbox>
+      <ion-checkbox checked="false" [(ngModel)]="deviceMissing"></ion-checkbox>
     </ion-item>
-    <ion-item>
-      <ion-input type="text" placeholder="Gerät fehlt" #deviceMissingInput></ion-input>
+    <ion-item *ngIf="deviceMissing === true">>
+      <ion-input type="text" placeholder="Bitte näher erläutern:" [(ngModel)]="deviceMissingString"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Sonstige Mängel</ion-label>
-      <ion-checkbox checked="false" #otherCheck></ion-checkbox>
+      <ion-checkbox checked="false" [(ngModel)]="otherDefects"></ion-checkbox>
     </ion-item>
-    <ion-item>
-      <ion-input type="text" placeholder="Sonstige Mängel" #otherCheckInput></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="text" placeholder="Bitte Mängel näher erläutern:" #longDescription></ion-input>
+    <ion-item *ngIf="otherDefects === true">
+      <ion-input type="text" placeholder="Bitte Mängel näher erläutern:"  [(ngModel)]="otherDefectsString"></ion-input>
     </ion-item>
   </ion-list>
   <div>
-    <button ion-button color="primary" menuToggle>Senden</button>
+    <button ion-button color="primary" menuToggle (click)="sendData()">Senden</button>
   </div>
   <ion-list>
     <ion-item *ngFor="let d of data">

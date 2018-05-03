@@ -16,6 +16,18 @@ export class PeopleServiceProvider
   {
     console.log('Hello PeopleServiceProvider Provider');
   }
+  
+  loadOne( id:String ){
+
+    var url = "https://gossens.eu/doener/api/hw_barcodes?hwbc_barcode=eq." + id;
+    return new Promise(resolve => {
+      this.http.get(url).subscribe(data => {
+        resolve(data.json());
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
 
   loadAll() 
   {

@@ -10,21 +10,46 @@ import { Toast } from '@ionic-native/toast';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  currentDate: String = new Date().toISOString(); 
   data: any;
   selectedProduct: any;
   productFound:boolean = false;
 
-  roomName: String;
-  teacherName: String;
-  
+  // All room types
+  roomName: String = "";
+  currentDate: String = new Date().toISOString(); 
+  teacherName: String = "";
+  furnitureMissing: Boolean = false;
+  blackboardMissing: Boolean = false;
+  ohpMissing: Boolean = false;
+  beamerMissing: Boolean = false;
+  windowMissing: Boolean = false;
+  roomDirty: Boolean = false;
+
+  // Rooms with computers
+  printerBroken: Boolean = false;
+  computerNumber: String = "";
+  screenNumber: String = "";
+  keyboardNumber: String = "";
+  mouseNumber: String = "";
+  deviceMissingString: String = "";
+  otherDefects: Boolean = false;
+  otherDefectsString: String = "";
+
   constructor(
     public navCtrl: NavController, 
     public restProvider: PeopleServiceProvider,
     private barcodeScanner: BarcodeScanner,
     private toast: Toast
   ) {
-    this.loadAllRestData();
+  }
+
+  loadOneRestData( id: String ){
+    console.log("load one rest data");
+    this.restProvider.loadOne(id)
+    .then(data => {
+      this.data = data;
+      console.log(this.data);
+    });
   }
 
   loadAllRestData() {
@@ -35,29 +60,49 @@ export class HomePage {
     });
   }
 
+  sendData(){
+    this.loadAllRestData();
+  }
+
   scan(){
+    console.log("start scanning");
     this.selectedProduct = {};
     this.barcodeScanner.scan().then((barcodeData) => {
       console.log("Scanned Barcode ID: " + barcodeData.text);
-      this.selectedProduct = this.data.find(product => product.hwbc_barcode === barcodeData.text);
-      if(this.selectedProduct !== undefined){
-        this.productFound = true;
-        console.log("Product found: " + barcodeData.text);
-      } else {
-        this.productFound = false;
-        console.log("Product not found: " + barcodeData.text);        
-        this.toast.show('Product not found', '5000', 'center').subscribe(
-          toast => {
-            console.log(toast);
-          }
-        );
-      }
-    }, (err) => {
-      this.toast.show(err, '5000', 'center').subscribe(
-        toast => {
-          console.log(toast);
-        }
-      );
+      this.loadOneRestData(barcodeData.text);
+      this.fillInputFromData(this.data);
     });
   }
+
+  fillInputFromData( data ){
+    // todo
+  }
+}
+
+
+    //   this.selectedProduct = this.data.find(product => product.hwbc_barcode === barcodeData.text);
+    //   console.log(this.selectedProduct);
+    //   if(this.selectedProduct !== undefined){
+    //     this.productFound = true;
+    //     console.log("Product found: " + barcodeData.text);
+
+        
+
+    //   } else {
+    //     this.productFound = false;
+    //     console.log("Product not found: " + barcodeData.text);        
+    //     this.toast.show('Product not found', '5000', 'center').subscribe(
+    //       toast => {
+    //         console.log(toast);
+    //       }
+    //     );
+    //   }
+    // }, (err) => {
+    //   this.toast.show(err, '5000', 'center').subscribe(
+    //     toast => {
+    //       console.log(toast);
+    //     }
+    //   );
+    // });
+  // }
 }
