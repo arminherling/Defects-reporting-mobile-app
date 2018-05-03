@@ -50,6 +50,7 @@ export class HomePage {
       this.data = data;
       console.log(this.data);
     });
+    console.log("end of one rest data");
   }
 
   loadAllRestData() {
@@ -70,12 +71,15 @@ export class HomePage {
     this.barcodeScanner.scan().then((barcodeData) => {
       console.log("Scanned Barcode ID: " + barcodeData.text);
       this.loadOneRestData(barcodeData.text);
-      this.fillInputFromData(this.data);
+      this.fillInputFromData(barcodeData);
     });
   }
 
-  fillInputFromData( data ){
-    // todo
+  fillInputFromData(data ){
+    console.log("a");
+    console.log(data);
+    this.roomName = data[0].hwbc_raum;
+    this.computerNumber = data[0].hwbc_geraetenr;
   }
 }
 
@@ -105,4 +109,4 @@ export class HomePage {
     //   );
     // });
   // }
-}
+// }
