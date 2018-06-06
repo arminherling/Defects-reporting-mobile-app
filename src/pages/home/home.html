@@ -32,7 +32,7 @@
       <ion-label>{{barcodeID}}</ion-label>
     </ion-item>
     <ion-item *ngIf="deviceFoundInDatabase === false">
-      <ion-label color="danger">Barcode ID existiert noch nicht, bitte ergänzen Sie die Geräteinfos und clicken Sie auf "Gerät speichern"</ion-label>
+      <ion-label text-wrap color="danger">Barcode ID existiert noch nicht, bitte ergänzen Sie die Geräteinfos und clicken Sie auf "Gerät speichern".</ion-label>
     </ion-item>
     <ion-item *ngIf="deviceFoundInDatabase === true">
       <ion-label>Mängel:</ion-label>
