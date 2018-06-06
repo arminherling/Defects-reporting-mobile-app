@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { PeopleServiceProvider } from '../../providers/people-service/people-service';
+import { RESTServiceProvider } from '../../providers/rest-service/rest-service';
 
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
-import { Toast } from '@ionic-native/toast';
 
 @Component({
   selector: 'page-home',
@@ -37,9 +36,8 @@ export class HomePage {
 
   constructor(
     public navCtrl: NavController, 
-    public restProvider: PeopleServiceProvider,
-    private barcodeScanner: BarcodeScanner,
-    private toast: Toast
+    public restProvider: RESTServiceProvider,
+    private barcodeScanner: BarcodeScanner
   ) {
   }
 

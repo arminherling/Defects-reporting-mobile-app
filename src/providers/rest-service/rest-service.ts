@@ -2,19 +2,19 @@ import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 /*
-  Generated class for the PeopleServiceProvider provider.
+  Generated class for the RESTServiceProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
 @Injectable()
-export class PeopleServiceProvider 
+export class RESTServiceProvider 
 {
   apiUrl = 'https://gossens.eu/doener/api/hw_barcodes';
 
   constructor(public http: Http) 
   {
-    console.log('Hello PeopleServiceProvider Provider');
+    console.log('Hello RESTServiceProvider Provider');
   }
   
   loadOne( id:String ){

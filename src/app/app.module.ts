@@ -7,7 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { PeopleServiceProvider } from '../providers/people-service/people-service';
+import { RESTServiceProvider } from '../providers/rest-service/rest-service';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Toast } from '@ionic-native/toast';
 
@@ -30,7 +30,7 @@ import { Toast } from '@ionic-native/toast';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PeopleServiceProvider,
+    RESTServiceProvider,
     BarcodeScanner,
     Toast
   ]
