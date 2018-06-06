@@ -6,28 +6,35 @@
   </ion-navbar>
 </ion-header>
 <ion-content class="home" padding>
-  
-  <h1>
-    <button ion-button color="primary" (click)="scan()">Scan</button>
-  </h1>
-
-  <ion-list>
+  <ion-list>  
     <ion-item>
-      <ion-label>Raum:</ion-label>
-
-      <ion-input type="text" placeholder="Raum" [(ngModel)]="roomName"></ion-input>
+      <ion-label>Datum: </ion-label>
+      <ion-datetime displayFormat="DDDD MMM D, YYYY"  min="2000" max="2040" [(ngModel)]="currentDate"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label>Lehrer/In:</ion-label>
       <ion-input type="text" placeholder="Lehrer/In:"  [(ngModel)]="teacherName"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Datum: </ion-label>
-      <ion-datetime displayFormat="DDDD MMM D, YYYY"  min="2000" max="2040" [(ngModel)]="currentDate"></ion-datetime>
+      <ion-label>Raum:</ion-label>
+      <ion-input type="text" placeholder="Raum" [(ngModel)]="roomName"></ion-input>
     </ion-item>
     <ion-item>
-        <ion-label>Alle Räume:</ion-label>
-      </ion-item>
+      <ion-label>Mängel:</ion-label>
+    </ion-item>
+    <ion-item *ngIf="deviceType !== ''">
+      <ion-label>Gerätetyp:</ion-label>
+      <ion-input type="text" [(ngModel)]="deviceType"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Geräte Nr.</ion-label>
+      <ion-input type="text" [(ngModel)]="deviceNumber"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-textarea placeholder="Bitte beschreiben Sie die Mängel" [(ngModel)]="defectDescription"></ion-textarea>
+    </ion-item>
+
+    <!-- 
     <ion-item>
       <ion-label>Mobiliar fehlt/defekt:</ion-label>
       <ion-checkbox checked="false" [(ngModel)]="furnitureMissing"></ion-checkbox>
@@ -88,12 +95,13 @@
     </ion-item>
     <ion-item *ngIf="otherDefects === true">
       <ion-input type="text" placeholder="Bitte Mängel näher erläutern:"  [(ngModel)]="otherDefectsString"></ion-input>
-    </ion-item>
+    </ion-item> -->
   </ion-list>
   <div>
+    <button ion-button color="primary" (click)="scan()">Scan</button>
     <button ion-button color="primary" menuToggle (click)="sendData()">Senden</button>
   </div>
-  <ion-list>
+  <ion-list *ngIf="debugViewEnabled === true">
     <ion-item *ngFor="let d of data">
       <h2>{{d.hwbc_id}}</h2>
       <p>{{d.hwbc_barcode}}</p>

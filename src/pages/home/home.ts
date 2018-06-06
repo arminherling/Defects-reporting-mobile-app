@@ -9,30 +9,35 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  data: any;
-  selectedProduct: any;
-  productFound:boolean = false;
+  data: any; // todo this is used for debugging, remove when done with the project
+  // selectedProduct: any;
+  // productFound:boolean = false;
 
   // All room types
   roomName: String = "";
   currentDate: String = new Date().toISOString(); 
   teacherName: String = "";
-  furnitureMissing: Boolean = false;
-  blackboardMissing: Boolean = false;
-  ohpMissing: Boolean = false;
-  beamerMissing: Boolean = false;
-  windowMissing: Boolean = false;
-  roomDirty: Boolean = false;
+  deviceNumber: String = "";
+  deviceType: String = "";
+  defectDescription: String = "";
 
-  // Rooms with computers
-  printerBroken: Boolean = false;
-  computerNumber: String = "";
-  screenNumber: String = "";
-  keyboardNumber: String = "";
-  mouseNumber: String = "";
-  deviceMissingString: String = "";
-  otherDefects: Boolean = false;
-  otherDefectsString: String = "";
+  debugViewEnabled: Boolean = true;
+  // furnitureMissing: Boolean = false;
+  // blackboardMissing: Boolean = false;
+  // ohpMissing: Boolean = false;
+  // beamerMissing: Boolean = false;
+  // windowMissing: Boolean = false;
+  // roomDirty: Boolean = false;
+
+  // // Rooms with computers
+  // printerBroken: Boolean = false;
+  // computerNumber: String = "";
+  // screenNumber: String = "";
+  // keyboardNumber: String = "";
+  // mouseNumber: String = "";
+  // deviceMissingString: String = "";
+  // otherDefects: Boolean = false;
+  // otherDefectsString: String = "";
 
   constructor(
     public navCtrl: NavController, 
@@ -42,15 +47,16 @@ export class HomePage {
   }
 
   loadOneRestData( id: String ){
-    console.log("load one rest data");
+    console.log("loading rest data for " + id);
     this.restProvider.loadOne(id)
     .then(data => {
       this.data = data;
-      console.log(this.data);
+      this.fillInputFromData(data[0]);
     });
     console.log("end of one rest data");
   }
 
+  // remove after done with project
   loadAllRestData() {
     this.restProvider.loadAll()
     .then(data => {
@@ -65,19 +71,22 @@ export class HomePage {
 
   scan(){
     console.log("start scanning");
-    this.selectedProduct = {};
+    // this.selectedProduct = {};
     this.barcodeScanner.scan().then((barcodeData) => {
       console.log("Scanned Barcode ID: " + barcodeData.text);
       this.loadOneRestData(barcodeData.text);
-      this.fillInputFromData(barcodeData);
+      // this.fillInputFromData(this.data);
     });
   }
 
   fillInputFromData(data ){
-    console.log("a");
-    console.log(data);
-    this.roomName = data[0].hwbc_raum;
-    this.computerNumber = data[0].hwbc_geraetenr;
+    // console.log("a");
+    // console.log(data);
+    // console.log(data[0]);
+    // console.log("a");
+    this.roomName = data.hwbc_raum;
+    this.deviceNumber = data.hwbc_geraetenr;
+    this.deviceType = data.hwbc_geraetetyp;
   }
 }
 
