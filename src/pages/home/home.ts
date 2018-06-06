@@ -20,8 +20,10 @@ export class HomePage {
   deviceNumber: String = "";
   deviceType: String = "";
   defectDescription: String = "";
+  barcodeID: String = "";
 
   debugViewEnabled: Boolean = true;
+  deviceFoundInDatabase?: Boolean = null;
   // furnitureMissing: Boolean = false;
   // blackboardMissing: Boolean = false;
   // ohpMissing: Boolean = false;
@@ -51,7 +53,14 @@ export class HomePage {
     this.restProvider.loadOne(id)
     .then(data => {
       this.data = data;
-      this.fillInputFromData(data[0]);
+      this.deviceFoundInDatabase = (data[0] !== undefined);
+      if(this.deviceFoundInDatabase){
+        this.fillInputFromData(data[0]);
+      }
+      else{
+        this.resetInputVariables();
+        this.barcodeID = id;
+      }
     });
     console.log("end of one rest data");
   }
@@ -69,6 +78,10 @@ export class HomePage {
     this.loadAllRestData();
   }
 
+  sendNewDevice(){
+    console.log("a");
+  }
+
   scan(){
     console.log("start scanning");
     // this.selectedProduct = {};
@@ -80,13 +93,18 @@ export class HomePage {
   }
 
   fillInputFromData(data ){
-    // console.log("a");
-    // console.log(data);
-    // console.log(data[0]);
-    // console.log("a");
     this.roomName = data.hwbc_raum;
     this.deviceNumber = data.hwbc_geraetenr;
     this.deviceType = data.hwbc_geraetetyp;
+    this.barcodeID = data.hwbc_barcode;
+  }
+
+  resetInputVariables(){
+    this.roomName = "";
+    this.deviceNumber = "";
+    this.deviceType = "";
+    this.barcodeID = "";
+    this.defectDescription = "";
   }
 }
 
