@@ -17,7 +17,7 @@ export class RESTServiceProvider
     console.log('Hello RESTServiceProvider Provider');
   }
   
-  loadOne(id: String){
+  loadOneData(id: String){
     var url = this.apiUrl + "?hwbc_barcode=eq." + id;
     return new Promise(resolve => {
       this.http.get(url).subscribe(data => {
@@ -28,7 +28,7 @@ export class RESTServiceProvider
     });
   }
 
-  loadAll(){
+  loadAllData(){
     return new Promise(resolve => {
       this.http.get(this.apiUrl).subscribe(data => {
         resolve(data.json());
@@ -38,7 +38,7 @@ export class RESTServiceProvider
     });
   }
 
-  saveNewDevice(){
+  addNewData(){
     return new Promise((resolve, reject) => {
       // todo set body
       this.http.post(this.apiUrl, "").subscribe(res => {

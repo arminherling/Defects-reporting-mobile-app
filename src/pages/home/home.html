@@ -43,8 +43,8 @@
   </ion-list>
   <ion-list>
     <button ion-button color="primary" (click)="scan()">Scan</button>
-    <button *ngIf="deviceFoundInDatabase === false" ion-button color="primary" (click)="sendNewDevice()">Gerät speichern</button>
-    <button *ngIf="deviceFoundInDatabase === true" ion-button color="primary" menuToggle (click)="sendData()">Senden</button>
+    <button *ngIf="deviceFoundInDatabase === false" ion-button color="primary" (click)="addNewDevice()">Gerät speichern</button>
+    <button *ngIf="deviceFoundInDatabase === true" ion-button color="primary" menuToggle (click)="sendReport()">Senden</button>
     <button *ngIf="debugViewEnabled === true" ion-button color="primary" menuToggle (click)="loadAllDevices()">Alles laden</button>
   </ion-list>
   <ion-list *ngIf="debugViewEnabled === true">

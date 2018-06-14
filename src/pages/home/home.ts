@@ -35,7 +35,7 @@ export class HomePage {
 
   loadOneDevice( id: String ){
     console.log("loading rest data for " + id);
-    this.restProvider.loadOne(id)
+    this.restProvider.loadOneData(id)
     .then(data => {
       this.data = data;
       this.deviceFoundInDatabase = (data[0] !== undefined);
@@ -52,19 +52,22 @@ export class HomePage {
 
   // remove after done with project
   loadAllDevices() {
-    this.restProvider.loadAll()
+    this.restProvider.loadAllData()
     .then(data => {
       this.data = data;
       console.log(this.data);
     });
   }
 
-  sendData(){
-    this.sendNewDevice();
+  sendReport(){
+    // still waiting for the finished implementation of the rest service
+    console.log("sending report");
   }
 
-  sendNewDevice(){
-    console.log("a");
+  addNewDevice(){
+    console.log("add new device");
+    // todo finish this
+    this.restProvider.addNewData(this.roomName, this.deviceNumber, this.deviceType, this.barcodeID);
   }
 
   scan(){
@@ -91,31 +94,3 @@ export class HomePage {
     this.defectDescription = "";
   }
 }
-
-
-    //   this.selectedProduct = this.data.find(product => product.hwbc_barcode === barcodeData.text);
-    //   console.log(this.selectedProduct);
-    //   if(this.selectedProduct !== undefined){
-    //     this.productFound = true;
-    //     console.log("Product found: " + barcodeData.text);
-
-        
-
-    //   } else {
-    //     this.productFound = false;
-    //     console.log("Product not found: " + barcodeData.text);        
-    //     this.toast.show('Product not found', '5000', 'center').subscribe(
-    //       toast => {
-    //         console.log(toast);
-    //       }
-    //     );
-    //   }
-    // }, (err) => {
-    //   this.toast.show(err, '5000', 'center').subscribe(
-    //     toast => {
-    //       console.log(toast);
-    //     }
-    //   );
-    // });
-  // }
-// }
