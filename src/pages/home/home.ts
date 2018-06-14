@@ -10,10 +10,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 })
 export class HomePage {
   data: any; // todo this is used for debugging, remove when done with the project
-  // selectedProduct: any;
-  // productFound:boolean = false;
+  debugViewEnabled: Boolean = true;
 
-  // All room types
   roomName: String = "";
   currentDate: String = new Date().toISOString(); 
   teacherName: String = "";
@@ -22,24 +20,11 @@ export class HomePage {
   defectDescription: String = "";
   barcodeID: String = "";
 
-  debugViewEnabled: Boolean = true;
+  // using a three state boolean for hiding some buttons at the start of the app
+  // null means hide "add device" and hide "send report"
+  // true means hide "add device" and show "send report"
+  // false means show "add device" and show "send report"
   deviceFoundInDatabase?: Boolean = null;
-  // furnitureMissing: Boolean = false;
-  // blackboardMissing: Boolean = false;
-  // ohpMissing: Boolean = false;
-  // beamerMissing: Boolean = false;
-  // windowMissing: Boolean = false;
-  // roomDirty: Boolean = false;
-
-  // // Rooms with computers
-  // printerBroken: Boolean = false;
-  // computerNumber: String = "";
-  // screenNumber: String = "";
-  // keyboardNumber: String = "";
-  // mouseNumber: String = "";
-  // deviceMissingString: String = "";
-  // otherDefects: Boolean = false;
-  // otherDefectsString: String = "";
 
   constructor(
     public navCtrl: NavController, 
@@ -48,7 +33,7 @@ export class HomePage {
   ) {
   }
 
-  loadOneRestData( id: String ){
+  loadOneDevice( id: String ){
     console.log("loading rest data for " + id);
     this.restProvider.loadOne(id)
     .then(data => {
@@ -66,7 +51,7 @@ export class HomePage {
   }
 
   // remove after done with project
-  loadAllRestData() {
+  loadAllDevices() {
     this.restProvider.loadAll()
     .then(data => {
       this.data = data;
@@ -75,7 +60,7 @@ export class HomePage {
   }
 
   sendData(){
-    this.loadAllRestData();
+    this.sendNewDevice();
   }
 
   sendNewDevice(){
@@ -84,11 +69,10 @@ export class HomePage {
 
   scan(){
     console.log("start scanning");
-    // this.selectedProduct = {};
     this.barcodeScanner.scan().then((barcodeData) => {
-      console.log("Scanned Barcode ID: " + barcodeData.text);
-      this.loadOneRestData(barcodeData.text);
-      // this.fillInputFromData(this.data);
+      let id: String  = barcodeData.text;
+      console.log("Scanned Barcode ID: " + id);
+      this.loadOneDevice(id);
     });
   }
 
