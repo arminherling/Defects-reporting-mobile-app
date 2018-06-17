@@ -66,8 +66,8 @@ export class HomePage {
 
   addNewDevice(){
     console.log("add new device");
-    // todo finish this
     this.restProvider.addNewData(this.roomName, this.deviceNumber, this.deviceType, this.barcodeID);
+    this.deviceFoundInDatabase = true;
   }
 
   scan(){

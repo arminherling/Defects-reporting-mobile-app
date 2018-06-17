@@ -38,11 +38,19 @@ export class RESTServiceProvider
     });
   }
 
-  addNewData(){
+  addNewData(roomName: String, deviceNumber: String, deviceType: String, barcodeID: String){
     return new Promise((resolve, reject) => {
-      // todo set body
-      this.http.post(this.apiUrl, "").subscribe(res => {
-        resolve(res);
+      let randomId = Math.floor(Math.random()*1000000000)+1;
+      console.log(randomId);
+      // using a random id because using null doesnt really work
+      let body = 
+      { hwbc_id: randomId,
+        hwbc_barcode: barcodeID,
+        hwbc_raum: roomName,
+        hwbc_geraetenr: deviceNumber, 
+        hwbc_geraetetyp: deviceType}
+      this.http.post(this.apiUrl, body).subscribe(data => {
+        resolve(data);
       }, (err) => {
         reject(err);
       });
